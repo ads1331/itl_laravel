@@ -87,4 +87,20 @@ class TableController extends Controller
             ];
         }));
     }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'num' => 'required|integer',
+            'description' => 'nullable|string',
+            'maxGuests' => 'required|integer',
+        ]);
+
+        $table = Table::create([
+            'num' => $request->num,
+            'description' => $request->description,
+            'maxGuests' => $request->maxGuests,
+        ]);
+
+        return response()->json(['table' => $table], 201);
+    }
 }

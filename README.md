@@ -42,3 +42,17 @@ GET http://127.0.0.1:8000/api/guest_lists/{id}
 
 PATCH http://127.0.0.1:8000/api/guest_lists/{id}
 ![alt text](image-7.png)
+
+
+## Дополнительно
+POST http://127.0.0.1:8000/api/tables
+
+![alt text](image-8.png)
+
+POST http://127.0.0.1:8000/api/guests
+
+![alt text](image-9.png)
+
+POST http://127.0.0.1:8000/api/login
+
+![alt text](image-10.png)

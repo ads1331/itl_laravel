@@ -29,5 +29,21 @@ class GuestController extends Controller
         $guest->update($request->all());
         return $guest;
     }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'table_id' => 'required|exists:tables,id',
+            'is_present' => 'required|boolean',
+        ]);
+
+        $guest = Guest::create([
+            'name' => $request->name,
+            'table_id' => $request->table_id,
+            'is_present' => $request->is_present,
+        ]);
+
+        return response()->json(['guest' => $guest], 201);
+    }
 }
 
