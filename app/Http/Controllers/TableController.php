@@ -103,4 +103,13 @@ class TableController extends Controller
 
         return response()->json(['table' => $table], 201);
     }
+    public function destroy($id)
+{
+    $table = Table::findOrFail($id);
+
+    $table->delete();
+
+    return response()->json(['message' => 'Стол успешно удален'], 200);
+}
+
 }

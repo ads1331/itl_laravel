@@ -9,7 +9,8 @@ class GuestController extends Controller
 {
     public function index()
     {
-        return Guest::all();
+        $guests = Guest::all();  
+        return response()->json($guests);
     }
 
     public function show($id)
@@ -45,5 +46,14 @@ class GuestController extends Controller
 
         return response()->json(['guest' => $guest], 201);
     }
+    public function destroy($id)
+{
+    $guest = Guest::findOrFail($id);
+
+    $guest->delete();
+
+    return response()->json(['message' => 'Гость успешно удален'], 200);
+}
+
 }
 

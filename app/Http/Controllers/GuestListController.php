@@ -71,6 +71,13 @@ public function update(Request $request, $id)
         'tables' => route('tables.show', ['id' => $guestList->id_table]),
     ]);
 }
+public function destroy($id)
+{
+    $guestList = GuestList::findOrFail($id);
+    $guestList->delete();
+
+    return response()->json(['message' => 'Запись в списке гостей успешно удалена'], 200);
+}
 
 
 }
